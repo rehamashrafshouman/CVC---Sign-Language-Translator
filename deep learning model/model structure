@@ -1,0 +1,32 @@
+import tensorflow as tf 
+class Model(tf.keras.Model):
+  def __init__(self):
+      super(Model, self).__init__(name='')
+      self.conva = tf.keras.layers.Conv2D(16, (3,3), strides=(1, 1), padding='same', data_format=("channels_last"),
+          activation="relu",input_shape=(64,64,1)
+      )
+      self.poola = tf.keras.layers.MaxPool2D(
+          pool_size=(4, 4), strides=(2,2), padding='same', data_format=("channels_last") 
+      )
+      self.convb = tf.keras.layers.Conv2D(32, (3,3), strides=(1, 1), padding='same', data_format=("channels_last"),
+          activation="relu"
+      )
+      self.poolb = tf.keras.layers.MaxPool2D(
+          pool_size=(4, 4), strides=(2,2), padding='same', data_format=("channels_last")
+      )
+      self.flatten = tf.keras.layers.Flatten(
+          data_format=("channels_last") 
+      )
+      self.fully = tf.keras.layers.Dense(
+          6, activation="softmax", use_bias=True 
+      )
+      
+
+  def __call__(self, X):
+    x = self.conva(X)
+    x1 = self.poola(x)
+    y = self.convb(x1)
+    y1 = self.poola(y)
+    z = self.flatten(y1)
+    z1 = self.fully(z)
+    return z1
