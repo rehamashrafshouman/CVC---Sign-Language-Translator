@@ -1,0 +1,7 @@
+def rect_rem:
+     #define region of interest
+     roi=frame[100:400, 400:700]
+     #croping region of interest
+     crop = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
+     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+     cv2.rectangle(gray,(400,100),(700,400),(255,255,0),0)  
