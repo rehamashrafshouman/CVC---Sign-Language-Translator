@@ -1,0 +1,22 @@
+def get_result(temp):
+###after model  mem b ta thah kaf seen
+    global n , letter
+    #get the index of max value in list
+    m = temp.index(max(temp))
+    #check the value of index of max
+    if m==0:
+        letter = 'م'      #frist index indcate م
+    elif m==1:
+        letter = 'ب'     #second index indcate ب
+    elif m==2:
+        letter = 'ت'      #third index indcate ت
+    elif m==3:
+        letter = 'ث'      #forth index indcate ث
+    elif m==4:
+        letter = 'ك'       #fifth index indcate ك
+    elif m == 5:
+        letter = 'س'       #sixth index indcate س
+    
+    #update the letter 
+    var.set(letter) # name
+    frame2.update_idletasks()
