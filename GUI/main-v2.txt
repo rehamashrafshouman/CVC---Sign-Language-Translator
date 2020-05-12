@@ -1,32 +1,35 @@
-sentence = ""
-letter = ''
-word = ""
+sentence = ""      # outputs the whole sentence
+letter = ''        # outputs a single char
+word = ""          # outputs a single word
 
 ro = Tk()
 ro.title('capture the images')
 ro.geometry("300x300")
-button = Button(ro, text="open camera" ,command=cap , bg = "gray" , width = 10  )
+button = Button(ro, text="open camera" ,command=cap , bg = "gray" , width = 10  )    # cap command calls the webcam to start capturing
 button.pack()
 
-frame2=Frame(ro, width=250, height=250)
+frame2=Frame(ro, width=250, height=250)     # create a frame with W 250 x H 250
+
+# calls copy to    clipboard function which copies the output word to paste if afterwards. 
+
 button2 = Button(frame2, text="copy the word to clipboard" ,command=copy_to_clipboard , bg = "gray" , width = 25  )
 button2.pack()
 
 l1 = Label(frame2, text="The Predicted Letter")
-var = StringVar()
-var.set(letter)
-l2 = Label(frame2, textvariable = var)
+var = StringVar()    # create a string variable
+var.set(letter)      # set it to "letter"
+l2 = Label(frame2, textvariable = var)   # display var "letter" as l2 
 l3 = Label(frame2, text="The word")
 
 var2 = StringVar()
-var2.set(word)
-l4 = Label(frame2, textvariable = var2)
+var2.set(word)        # do the same with "word" and store it as a var
+l4 = Label(frame2, textvariable = var2)   # display it as l4
 
 l5 = Label(frame2, text="The sentence")
 
 var3 = StringVar()
-var3.set(sentence)
-l6 = Label(frame2, textvariable = var3)
+var3.set(sentence)      # do the same with "sentence" and store it as a var
+l6 = Label(frame2, textvariable = var3)   # display it as l6
 
 l1.pack()
 l2.pack()
