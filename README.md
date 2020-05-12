@@ -16,8 +16,8 @@ Steps of the road we took :
 
   
 Team name : Space cowboy
-Team members name: ابانوب صليب 
-                   ابانوب  ميخائيل
-                    ريتا ايهاب
-                    ريهام اشرف 
+Team members name: -ابانوب صليب 
+                   -ابانوب  ميخائيل
+                    -ريتا ايهاب
+                    -ريهام اشرف 
                     منه الله محمد
