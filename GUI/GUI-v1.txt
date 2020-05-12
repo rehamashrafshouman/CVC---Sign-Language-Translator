@@ -1,33 +1,33 @@
-import cv2
-from tkinter import *
+import cv2                # import opencv library
+from tkinter import *     # import python gui library
 
 
-def cap():
-    name = ""
-    a = 0
-    video = cv2.VideoCapture(0)
+def cap():                # cap() function calls the webcam to start recording
+    name = ""             # name: prints the output word
+    a = 0                 # a: the total running time of the webcam in "ms"
+    video = cv2.VideoCapture(0)    # open webcam
     while True:
-        a=a+1
-        check,frame=video.read()
-        cv2.imshow("capturing",frame)
+        a=a+1             #increment counter
+        check,frame=video.read()        # reading the video stream (feed) from the webcam and storing it in frame
+        cv2.imshow("capturing",frame)   # display the captured frame
         ########model
-        key = cv2.waitKey(1)
-        if key==ord('q'):
+        key = cv2.waitKey(1)            # display a frame for 1 ms, then display will be automatically closed
+        if key==ord('q'):               # if "q" is pressed, close the webcam
             break
-    print(a)
-    video.release()
-    cv2.destroyAllWindows()
+    print(a)     
+    video.release()          # when everything done, release the capture
+    cv2.destroyAllWindows()  # close all windows 
 
     ###after model  mem b ta thah kaf seen
-    list=[[0.22,0.333,0.5,0.799,0.004,0.888],[0.22,0.333,0.5,0.799,0.004,0.888],[0.22,0.333,0.5,0.799,0.004,0.888],[0.22,0.333,0.5,0.799,0.004,0.888],[0.999,0.333,0.5,0.799,0.004,0.888],[0.1,0.333,0.5,0.699,0.704,0.0288],[0.1,0.333,0.5,0.699,0.704,0.0288]]
-    n=1777
+    list=[[0.22,0.333,0.5,0.799,0.004,0.888],[0.22,0.333,0.5,0.799,0.004,0.888],[0.22,0.333,0.5,0.799,0.004,0.888],[0.22,0.333,0.5,0.799,0.004,0.888],[0.999,0.333,0.5,0.799,0.004,0.888],[0.1,0.333,0.5,0.699,0.704,0.0288],[0.1,0.333,0.5,0.699,0.704,0.0288]]    # a 2D array containing the probabilities of the 6 chars "ب,ت,ث,ك,س,م"
+    n=1777    # random initiator
     for i in list:
-        m = i.index(max(i))
+        m = i.index(max(i))    #check for the max char. in the array so that if the char. is repeated (stay unchanged), the screen won't                                # print an array of the same char. , instead it will only print the char. once.
         if n==m:
             continue
         n=m
-        if m==0:
-            name=name+'م'
+        if m==0:                 # print each char. according to its index
+            name=name+'م'        
         elif m==1:
             name=name+'ب'
         elif m==2:
@@ -39,10 +39,10 @@ def cap():
         elif m == 5:
             name = name + 'س'
     root = Tk()
-    root.title('Result')
-    root.geometry("300x300")
-    l =Label(root,text="The word")
-    le=Label(root,text=name)
+    root.title('Result')        # add title result
+    root.geometry("300x300")    #root window = W 300 x H 300
+    l =Label(root,text="The word")   
+    le=Label(root,text=name)         # name = output chars.
     l.pack()
     le.pack()
     root.mainloop()
@@ -51,6 +51,6 @@ def cap():
 ro = Tk()
 ro.title('capture the images')
 ro.geometry("300x300")
-button = Button(ro, text="open camera" ,command=cap , bg = "gray" , width = 10  )
+button = Button(ro, text="open camera" ,command=cap , bg = "gray" , width = 10  )  # open camera: calls the function cap to start webcam
 button.pack()
 ro.mainloop()
