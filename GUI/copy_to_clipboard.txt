@@ -1,0 +1,9 @@
+#funcion Copy sentence to clipboard
+def copy_to_clipboard():
+    global sentence
+    #clear clipboard
+    ro.clipboard_clear()
+    #copy sentence toclipboard
+    ro.clipboard_append(sentence)
+    #update the GUI
+    ro.update()

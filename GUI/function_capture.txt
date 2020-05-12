@@ -1,0 +1,103 @@
+# Camera function
+def cap():
+    global sentence, img, letter ,word 
+    
+    # Initialize variables
+    sentence = ""
+    word = ""
+    
+    # Start video capture
+    video = cv2.VideoCapture(0)
+    while True:
+        
+        # Read frame
+        check,frame=video.read()
+       
+        # Image processing
+        # Extract hand from image
+        crop = hand_extraction(frame)
+        
+        # Convert to greyscale
+        crop = cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY)
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        
+        
+        # Deep learning model
+        # Resize photo to 64x64 to be same as training data
+        temp = cv2.resize(crop,dsize=(64,64))
+        
+        # Normalize photo
+        temp = np.array(temp)/255
+        
+        # Reshape photo
+        temp = temp.reshape(1,64,64,1)
+        
+        # Pass photo to model
+        o = model(temp)
+
+        # Get letter of highest prediction from model
+        get_result( [o[0,0], o[0,1], o[0,2], o[0,3], o[0,4], o[0,5] ])
+        
+        
+        # Instructions in camera window
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        cv2.putText(gray,'Save letter press \'a\'',(60,370), font, 1,(255,255,255),2,cv2.LINE_AA)
+        cv2.putText(gray,'Quit press \'q\'',(60,395), font, 1,(255,255,255),2,cv2.LINE_AA)
+        cv2.putText(gray,'Remove the last letter press \'l\'',(60,420), font, 1,(255,255,255),2,cv2.LINE_AA)
+        cv2.putText(gray,'Clear word press \'c\'',(60,445), font, 1,(255,255,255),2,cv2.LINE_AA)
+        cv2.putText(gray,'Add word to sentence press \'space\'',(60,470), font, 1,(255,255,255),2,cv2.LINE_AA)
+        
+        # Show camera window
+        cv2.imshow('Camera', gray)
+        cv2.imshow('frame',crop) 
+        frame2.pack()     
+        
+        # Get key from user and perform actions
+        key = cv2.waitKey(1)
+        
+        # Quit
+        if key & 0xFF == ord('q'):
+            var2.set(word) 
+            var3.set(sentence) 
+            frame2.update_idletasks()
+            break
+        
+        # Add letter
+        elif key==ord('a'):
+            word=word+letter
+            # Update labels with values of variables 
+            var2.set(word) 
+            frame2.update_idletasks()
+        
+        # Clear word
+        elif key ==ord('c'):
+            word="                         "
+            var2.set(word)
+            frame2.update_idletasks()
+            word=""
+            # Update labels with values of variables 
+            var2.set(word) 
+            frame2.update_idletasks()
+        
+        # Backspace
+        elif key ==ord('l'):
+            word= word[:-1]
+            # Update labels with values of variables 
+            var2.set(word)  
+            frame2.update_idletasks()
+        
+        # Add word to sentence and delete word
+        elif key ==ord(' '):
+            sentence = sentence + word + ' '
+            word="                          "
+            var2.set(word)
+            frame2.update_idletasks()
+            word=""
+            # Update labels with values of variables 
+            var2.set(word) 
+            var3.set(sentence) 
+            frame2.update_idletasks()
+            
+    # Close camera window
+    video.release()
+    cv2.destroyAllWindows()
