@@ -1,7 +1,7 @@
 # CVC---Sign-Language-Translator
-In college there is a computer vision compition (CVC), we provided an idea for our project which is a translator for arabic letters (some of them)for deaf and mute poeple . 
+In college there is a computer vision compition (CVC), we provided an idea for our project which is a translator for arabic letters (some of them)for deaf and mute poeple. 
 
-We developed a machine learning model (we tried many models) to detect 6 arabic characters(ب ت ث س م ك).
+We developed a machine learning model (we tried many models) to detect 6 arabic characters(ب ت ث س م ك). Due to limitaions of time and GPU, the model was trained on 6 letters only.
 
 ## Team name: Space cowboy
 ## Team members 
@@ -37,8 +37,12 @@ This software has been developed on google colab, executed by jupyter notebook a
 
 ### Software Usage
 After configuring your webcam you can close the window. You'll now have two windows. To use the program perform this sequence of actions:
-1. Without showing your hand in the frame, press the `B` key on your keyboard. It will start the process of background removal.
-2. Move your hand so that it completely covers the two purple rectagles shown in the window called `output`. Press the `S` key on your keyboard. This will sample the color of your skin and start the process of hand detection.
+1. Click on `Open Camera` button.
+2. Move your hand slightly close to camera. Gesture will be translated at once and diplayed in left window.
+3. If `the predicted letter` is what you desire press `a` on your keyboard to add it to your word. 
+
+
+Press the `S` key on your keyboard. This will sample the color of your skin and start the process of hand detection.
 3. When you want to close the program press the `esc` key on your keyboard.
 
                    
