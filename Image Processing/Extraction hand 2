@@ -1,0 +1,26 @@
+import cv2 
+import matplotlib.pyplot as plt
+#importing the image
+image = cv2.imread("qwer.jpg")
+gray=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+edged = cv2.Canny(gray, 60,100)
+#finding the cotours , sort them and get the largest one
+(cnts, _) = cv2.findContours(edged.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+idx = 0
+contour_info = []
+for c in cnts:
+    contour_info.append((
+        c,
+        cv2.contourArea(c),
+    ))
+contour_info = sorted(contour_info, key=lambda contour_info:contour_info[1], reverse=True)
+max_contour = contour_info[0]
+#bounding the largest contour
+x,y,w,h = cv2.boundingRect(max_contour[0])
+new_img=image[y:y+h+20,x:x+w+20]
+#save image and show it 
+cv2.imwrite(str(idx) + '.png', new_img)
+image = cv2.imread("0.png")
+plt.imshow(image)
+cv2.imshow("im",image)
+cv2.waitKey(0)
