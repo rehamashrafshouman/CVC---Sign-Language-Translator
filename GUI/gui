@@ -1,0 +1,141 @@
+from tkinter import *
+from PIL import ImageTk, Image
+import cv2
+import numpy as np
+import random
+import matplotlib.pyplot as plt
+
+
+def video_stream():
+    global name , flag
+
+    #flag to close the camera
+    if flag == 1 :
+        return
+    #to take data from camera
+    _, frame = cap.read()
+
+    #to show camera in a window
+    # function for video streaming
+    cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA)
+    img = Image.fromarray(cv2image)
+    imgtk = ImageTk.PhotoImage(image=img)
+    lmain.imgtk = imgtk
+    lmain.configure(image=imgtk)
+    lmain.after(1, video_stream)
+
+    # Extract hand from image
+    #i = extraction(frame)
+
+    # Process on hand
+    #cv2.imshow('Final', background_removal(i))
+
+    #to show frame with buttons and labels
+    frame2.grid(row=0, column=0)
+
+    #random list generated to test maximum index
+    for i in range(6):
+        list.append(random.randrange(0, 100) / 100)
+    #show the list
+    print(list)
+    # varabile to compare index with it
+    n = 1777
+    #to get index of  maximum value in list
+    m = list.index(max(list))
+    #to delet old list
+    list.clear()
+    #to check that max not duplicated to not duplicate the letter
+    if n != m :
+        #to make new index as old index
+        n = m
+        #to add pridected letter to word
+        #add letter with max value to word
+        if m == 0:
+            name = name + 'م'
+        elif m == 1:
+            name = name + 'ب'
+        elif m == 2:
+            name = name + 'ت'
+        elif m == 3:
+            name = name + 'ث'
+        elif m == 4:
+            name = name + 'ك'
+        elif m == 5:
+            name = name + 'س'
+    #update value of name in label
+    var.set(name)
+    frame2.update_idletasks()
+
+#function to clear last letter
+def clearletter ():
+    global name
+    name= name[:-1]
+#function to clear word
+def clear():
+    global name
+    name=""
+#function to close the camera window
+def close():
+    global flag
+    cam.grid_remove()
+    cap.release()
+    cv2.destroyAllWindows()
+    flag = 1
+
+
+#global variables
+
+#list to generate 6 values randomaly to test max value
+list= []
+#flag to close camera
+flag = 0
+#variable to storage word
+name=""
+# Capture from camera
+cap = cv2.VideoCapture(0)
+#generate GUI
+root = Tk()
+#change the size of window
+root.geometry("500x500")
+#change the title of window
+root.title("                                             sign language translator                                        ")
+
+# Create a frame
+frame1=Frame(root, width=250, height=250)
+frame1.grid(row=0,column=0)
+
+frame2=Frame(root, width=250, height=250)
+
+
+#create frame to camera in window
+cam = Frame(root, bg="white",width=250, height=250)
+cam.grid(row=1,column=0)
+
+# Create a label in the frame
+lmain = Label(cam)
+lmain.grid()
+#create button to open camera
+b = Button(frame1, text="open camera", command=video_stream )
+b.grid()
+#create button to close camera
+b2 = Button(frame2, text="close camera" ,command= close)
+#create button to clear letter
+b3 = Button(frame2, text="clear letter " , command = clearletter)
+#create button to romve word
+b4 = Button(frame2, text="CLEAR ALL" , command= clear)
+#create label
+l1 = Label(frame2, text="The RESULT")
+#create variable to save word in it
+var = StringVar()
+var.set(name)
+#create label to show word
+le = Label(frame2, textvariable = var)
+
+#to show buttons and lables
+b2.grid()
+b3.grid()
+b4.grid()
+l1.grid()
+le.grid()
+#to open window of GUI
+root.mainloop()
