@@ -1,0 +1,38 @@
+sentence = ""
+letter = ''
+word = ""
+
+ro = Tk()
+ro.title('capture the images')
+ro.geometry("300x300")
+button = Button(ro, text="open camera" ,command=cap , bg = "gray" , width = 10  )
+button.pack()
+
+frame2=Frame(ro, width=250, height=250)
+button2 = Button(frame2, text="copy the word to clipboard" ,command=copy_to_clipboard , bg = "gray" , width = 25  )
+button2.pack()
+
+l1 = Label(frame2, text="The Predicted Letter")
+var = StringVar()
+var.set(letter)
+l2 = Label(frame2, textvariable = var)
+l3 = Label(frame2, text="The word")
+
+var2 = StringVar()
+var2.set(word)
+l4 = Label(frame2, textvariable = var2)
+
+l5 = Label(frame2, text="The sentence")
+
+var3 = StringVar()
+var3.set(sentence)
+l6 = Label(frame2, textvariable = var3)
+
+l1.pack()
+l2.pack()
+l3.pack()
+l4.pack()
+l5.pack()
+l6.pack()
+
+ro.mainloop()
