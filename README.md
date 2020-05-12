@@ -5,11 +5,13 @@ We developed a machine learning model (we tried many models) to detect 6 arabic 
 
 ## Team name: Space cowboy
 ## Team members 
-  - Abanoub Salib
-  - Abanoub Michael
-  - Rita Ehab
-  - Reham Ashraf
-  - Menna Allah Mohamed
+  - Abanoub Salib :ML 
+  - Abanoub Michael:GUI
+  - Rita Ehab:Image processing
+  - Reham Ashraf :Image processing
+  - Menna Allah Mohamed: GUI
+
+Whole team did the integration part together and collecting dataset.
 
 ## Our Workflow
   1) We made a dataset by ourselves but then we found a dataset that can help us as ML model need large dataset.
@@ -39,10 +41,14 @@ This software has been developed on google colab, executed by jupyter notebook a
 After configuring your webcam you can close the window. You'll now have two windows. To use the program perform this sequence of actions:
 1. Click on `Open Camera` button.
 2. Move your hand slightly close to camera. Gesture will be translated at once and diplayed in left window.
-3. If `the predicted letter` is what you desire press `a` on your keyboard to add it to your word. 
+3. If `the predicted letter` is what you desire press `a` on your keyboard to add it to your word.
+4.If not desired letter added you can delete last letter by pressing on 'l'.
+5.You can copy word to clip board by pressing on button `copy to clip board` so you can paste it in whatever you want.
+6.If you want to clear word press on `c`.
+7.To add a new word to sentence press `space`.
+8.To quit from camera press `q` .
 
 
-Press the `S` key on your keyboard. This will sample the color of your skin and start the process of hand detection.
-3. When you want to close the program press the `esc` key on your keyboard.
+
 
                    
