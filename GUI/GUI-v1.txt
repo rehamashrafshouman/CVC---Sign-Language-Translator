@@ -1,0 +1,56 @@
+import cv2
+from tkinter import *
+
+
+def cap():
+    name = ""
+    a = 0
+    video = cv2.VideoCapture(0)
+    while True:
+        a=a+1
+        check,frame=video.read()
+        cv2.imshow("capturing",frame)
+        ########model
+        key = cv2.waitKey(1)
+        if key==ord('q'):
+            break
+    print(a)
+    video.release()
+    cv2.destroyAllWindows()
+
+    ###after model  mem b ta thah kaf seen
+    list=[[0.22,0.333,0.5,0.799,0.004,0.888],[0.22,0.333,0.5,0.799,0.004,0.888],[0.22,0.333,0.5,0.799,0.004,0.888],[0.22,0.333,0.5,0.799,0.004,0.888],[0.999,0.333,0.5,0.799,0.004,0.888],[0.1,0.333,0.5,0.699,0.704,0.0288],[0.1,0.333,0.5,0.699,0.704,0.0288]]
+    n=1777
+    for i in list:
+        m = i.index(max(i))
+        if n==m:
+            continue
+        n=m
+        if m==0:
+            name=name+'م'
+        elif m==1:
+            name=name+'ب'
+        elif m==2:
+            name=name+'ت'
+        elif m==3:
+            name=name+'ث'
+        elif m==4:
+            name=name+'ك'
+        elif m == 5:
+            name = name + 'س'
+    root = Tk()
+    root.title('Result')
+    root.geometry("300x300")
+    l =Label(root,text="The word")
+    le=Label(root,text=name)
+    l.pack()
+    le.pack()
+    root.mainloop()
+
+
+ro = Tk()
+ro.title('capture the images')
+ro.geometry("300x300")
+button = Button(ro, text="open camera" ,command=cap , bg = "gray" , width = 10  )
+button.pack()
+ro.mainloop()
