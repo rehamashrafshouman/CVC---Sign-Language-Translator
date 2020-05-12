@@ -11,7 +11,8 @@ We developed a machine learning model (we tried many models) to detect 6 arabic 
   - Reham Ashraf :Image processing
   - Menna Allah Mohamed: GUI
 
-Whole team did the integration part together and collecting dataset.
+The whole team did the integration part and collected the dataset.
+For demo click [here](https://youtu.be/DT6lTy0NkSU)
 
 ## Our Workflow
   1) We made a dataset by ourselves but then we found a dataset that can help us as ML model need large dataset.
