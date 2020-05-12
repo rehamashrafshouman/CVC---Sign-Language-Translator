@@ -12,7 +12,7 @@ We developed a machine learning model (we tried many models) to detect 6 arabic 
   - Menna Allah Mohamed: GUI
 
 The whole team did the integration part and collected the dataset.
-For demo click [here](https://youtu.be/DT6lTy0NkSU) or [here] (https://youtu.be/udewL2WCOpg)
+For demo click [here](https://youtu.be/DT6lTy0NkSU) or [here](https://youtu.be/udewL2WCOpg)
 
 ## Our Workflow
   1) We made a dataset by ourselves but then we found a dataset that can help us as ML model need large dataset.
