@@ -42,11 +42,11 @@ After configuring your webcam you can close the window. You'll now have two wind
 1. Click on `Open Camera` button.
 2. Move your hand slightly close to camera. Gesture will be translated at once and diplayed in left window.
 3. If `the predicted letter` is what you desire press `a` on your keyboard to add it to your word.
-4.If not desired letter added you can delete last letter by pressing on 'l'.
-5.You can copy word to clip board by pressing on button `copy to clip board` so you can paste it in whatever you want.
-6.If you want to clear word press on `c`.
-7.To add a new word to sentence press `space`.
-8.To quit from camera press `q` .
+4. If not desired letter added you can delete last letter by pressing on 'l'.
+5. You can copy word to clip board by pressing on button `copy to clip board` so you can paste it in whatever you want.
+6. If you want to clear word press on `c`.
+7. To add a new word to sentence press `space`.
+8. To quit from camera press `q` \.
 
 
 
